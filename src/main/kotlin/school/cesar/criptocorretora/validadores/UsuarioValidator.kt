@@ -3,10 +3,12 @@ package school.cesar.criptocorretora.validadores
 import school.cesar.criptocorretora.entidades.Usuario
 import school.cesar.criptocorretora.excecoes.UsuarioInvalidoException
 import school.cesar.criptocorretora.util.CPFUtil
+import school.cesar.criptocorretora.util.EmailUtil
 import school.cesar.criptocorretora.util.SenhaUtil
 
 class UsuarioValidator(
     private val cpfUtil: CPFUtil,
+    private val emailUtil: EmailUtil,
     private val senhaUtil: SenhaUtil
 ) {
 
@@ -42,7 +44,7 @@ class UsuarioValidator(
         if (usuario.cpf.length != 11) {
             throw UsuarioInvalidoException("O campo cpf deve ter 11 caracteres numericos")
         }
-        
+
         if (usuario.senha.length !in 8..15) {
             throw UsuarioInvalidoException("O campo confirmação senha deve ter entre 8 e 15 caracteres")
         }
@@ -51,6 +53,10 @@ class UsuarioValidator(
     private fun validaFormatoCampos(usuario: Usuario) {
         if (!cpfUtil.isCPF(usuario.cpf)) {
             throw UsuarioInvalidoException("O cpf é invalido")
+        }
+
+        if (!emailUtil.isEmailValido(usuario.email)) {
+            throw UsuarioInvalidoException("O a emal deve seguir o formato palavra@palavra.palavra")
         }
 
         if (!senhaUtil.isFormatoOK(usuario.senha)) {

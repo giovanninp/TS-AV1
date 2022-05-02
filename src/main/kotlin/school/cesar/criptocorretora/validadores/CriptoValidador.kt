@@ -1,7 +1,7 @@
 package school.cesar.criptocorretora.validadores
 
 import school.cesar.criptocorretora.entidades.Cripto
-import school.cesar.criptocorretora.excecoes.UsuarioInvalidoException
+import school.cesar.criptocorretora.excecoes.CriptoInvalidaException
 
 class CriptoValidador {
 
@@ -11,7 +11,7 @@ class CriptoValidador {
 
     private fun validaCamposObrigatorios(cripto: Cripto) {
         if (cripto.nome.isBlank()) {
-            throw UsuarioInvalidoException("O campo nome deve ser preenchido")
+            throw CriptoInvalidaException("O campo nome deve ser preenchido")
         }
     }
 }
