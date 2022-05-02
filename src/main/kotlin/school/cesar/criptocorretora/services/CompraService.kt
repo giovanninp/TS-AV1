@@ -7,6 +7,7 @@ class CompraService(
 
     fun comprar(idUsuario: Long, idCripto: Long) {
         val usuario = usuarioService.buscarPorId(idUsuario)
+        val cripto = criptoService
     }
 
 }

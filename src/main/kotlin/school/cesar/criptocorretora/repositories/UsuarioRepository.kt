@@ -11,5 +11,5 @@ class UsuarioRepository {
     }
 
     fun buscarPorId(id: Long) =
-        usuarios.filter { it.id == id }
+        usuarios.firstOrNull { it.id == id }
 }

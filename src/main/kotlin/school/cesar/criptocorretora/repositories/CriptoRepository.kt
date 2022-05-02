@@ -15,8 +15,8 @@ class CriptoRepository {
     }
 
     fun buscarPeloId(id: Long) =
-        criptos.filter { it.id == id }
+        criptos.firstOrNull { it.id == id }
 
     fun buscarPeloNome(nome: String) =
-        criptos.filter { it.nome == nome }
+        criptos.firstOrNull { it.nome == nome }
 }
